@@ -13,7 +13,7 @@
   stages {
     stage('Git') {
       steps {
-        git(url: 'https://github.com/austinrain03/flask', branch: 'main')
+        git(url: 'https://github.com/austinrain03/flasky', branch: 'main')
       }
     }
 stage('Build Stage') {
@@ -31,6 +31,11 @@ stage('Deploy Stage') {
             }
           }
         }
+<<<<<<< HEAD
       }
     }
 }
+=======
+      }    
+  }
+>>>>>>> 91afa60587c62cbab6561e713d29d0e771758ee1
