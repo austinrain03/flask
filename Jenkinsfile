@@ -1,4 +1,4 @@
-  pipeline {
+pipeline {
     environment {
         registry = 'austinrain03/flask_app'
         registryCredentials = 'docker'
@@ -14,7 +14,7 @@
   stages {
     stage('Git') {
       steps {
-        git(url: 'https://github.com/austinrain03/flask', branch: 'main')
+        git(url: 'https://github.com/austinrain03/flasky', branch: 'main')
       }
     }
 stage('Build Stage') {
@@ -35,7 +35,7 @@ stage('Deploy Stage') {
       }
 stage('Kubernetes') {
   steps {
-    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_SECRET_ACCESS_KEY')]) {
+    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId:'AWS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
       sh "aws eks update-kubeconfig --region us-east-1 --name ${cluster_name}"
       script{
         try{
